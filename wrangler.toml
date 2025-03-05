@@ -1,0 +1,33 @@
+name = "red-base-757f"
+main = "src/worker.js"
+compatibility_date = "2025-02-27"
+workers_dev = true
+preview_urls = true
+
+[[routes]]
+pattern = "plate-pals.handler.spiritbulb.com"
+zone_name = "spiritbulb.com"
+custom_domain = true
+
+[observability]
+enabled = false
+
+  [observability.logs]
+  enabled = true
+  head_sampling_rate = 1
+  invocation_logs = true
+
+[[d1_databases]]
+binding = "D1"
+database_id = "0fa8ccb2-baf4-4f6b-af67-7f673b7fb3c9"
+database_name = "appfood"
+
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "appfood"
+
+[vars]
+R2_ACCESS_KEY_ID = "acb913031f809fd8133a199cfdb4a8c7"
+R2_ACCOUNT_ID = "a78c24ebd1ecc60a876998765921c445"
+R2_BUCKET_NAME = "appfood"
+R2_SECRET_ACCESS_KEY = "edeac932967ec1d465ae3c3f742c93f64055b9bf26165289d7d50f0ea941e697"
