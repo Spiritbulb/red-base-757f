@@ -386,10 +386,10 @@ var worker_default = {
   }
 };
 async function saveFormData(d1, formData) {
-  const { title, image, portion, nationality, price } = formData;
+  const { title, image, portion, nationality } = formData;
   await d1.prepare(
     "INSERT INTO food_items (title, image, portion, nationality) VALUES (?1, ?2, ?3, ?4)"
-  ).bind(title, image, portion, nationality, price).run();
+  ).bind(title, image, portion, nationality).run();
 }
 __name(saveFormData, "saveFormData");
 export {
