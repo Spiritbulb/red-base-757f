@@ -323,6 +323,15 @@ var worker_default = {
           headers: { "Content-Type": "application/json" }
         });
       }
+      if (pathname === "/api/specific-data") {
+        const query = searchParams.get("query") || "";
+        const sanitizedQuery = query.replace(/[^a-zA-Z0-9\s]/g, ""); // Sanitize input
+        const sqlQuery = sanitizedQuery ? "SELECT * FROM food_items WHERE title LIKE ?" : "SELECT * FROM food_items";
+        const result = await env.D1.prepare(sqlQuery).bind(`%${sanitizedQuery}%`).all();
+        return new Response(JSON.stringify(result), {
+          headers: { "Content-Type": "application/json" }
+        });
+      }
       if (pathname === "/upload-image") {
         try {
           const { file, fileName } = await request.json();
