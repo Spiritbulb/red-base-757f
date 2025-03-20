@@ -309,6 +309,7 @@ var worker_default = {
       if (pathname === "/api/filtered-data") {
         const filter = searchParams.get("filter") || "";
         const query = searchParams.get("query") || "";
+        console.log(query);
         const limit = searchParams.get("limit") || 6;
         const result = await env.D1.prepare(
           "SELECT * FROM food_items WHERE nationality = ? AND title LIKE ? LIMIT ?"
